@@ -1,33 +1,44 @@
 {
-  "name": "react-stuff",
+  "name": "No",
   "version": "1.0.0",
-  "description": "",
+  "description": "fun",
   "main": "index.js",
   "scripts": {
-    "serve": "budo index.js --live -- -t [babelify --presets es2015 --presets react --presets stage-0] -d | garnish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "budo ./index.js -t babelify -d --serve bundle.js --live",
+    "build": "browserify ./index.js -t babelify -o bundle.js -g uglifyify",
+    "test": "browserify test.js | smokestack | tap-spec",
+    "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
+    "push": "gh-pages -d dist",
+    "deploy": "npm run build && npm run dist && npm run push"
+  },
+  "browserify": {
+    "transform": []
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michaelmcgrath/react-stuff.git"
+    "url": "https://github.com/michaelmcgrath/No"
   },
-  "author": "",
+  "author": "michaelmcgrath",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/michaelmcgrath/react-stuff/issues"
+    "url": "https://github.com/michaelmcgrath/No/issues"
   },
-  "homepage": "https://github.com/michaelmcgrath/react-stuff#readme",
+  "homepage": "https://github.com/michaelmcgrath/No",
   "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   },
   "devDependencies": {
-    "babel-plugin-react-transform": "^2.0.0",
-    "babel-plugin-transform-runtime": "^6.4.3",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
-    "budo": "^8.0.2"
+    "browserify": "^10.0.0",
+    "budo": "^4.0.0",
+    "gh-pages": "^0.3.0",
+    "smokestack": "^3.3.0",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.1.0"
   }
 }
