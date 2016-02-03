@@ -2,10 +2,10 @@
   "name": "",
   "version": "1.0.0",
   "description": "it's a real sweet app",
-  "main": "index.js",
+  "main": "main.jsx",
   "scripts": {
-    "start": "budo . -t babelify -d --serve bundle.js --live",
-    "build": "browserify . -t babelify -o bundle.js -g uglifyify",
+    "start": "budo ./app/main.jsx -t babelify -d --serve bundle.js --live",
+    "build": "browserify ./app/main.jsx -t babelify -o bundle.js -g uglifyify",
     "test": "browserify test.js | smokestack | tap-spec",
     "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
     "push": "gh-pages -d dist",
